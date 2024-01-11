@@ -1,0 +1,28 @@
+function calculateAge() {
+    const dobInput = document.getElementById('dob');
+    const resultContainer = document.getElementById('result');
+  
+    const dob = new Date(dobInput.value);
+    const today = new Date();
+  
+    if (isNaN(dob.getTime())) {
+      alert('Please enter a valid date of birth.');
+      return;
+    }
+  
+    if (dob > today) {
+      alert('Invalid date of birth. Please enter a date before today.');
+      return;
+    }
+  
+    let age = today.getFullYear() - dob.getFullYear();
+    const monthDiff = today.getMonth() - dob.getMonth();
+    const dayDiff = today.getDate() - dob.getDate();
+  
+    if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+      age--;
+    }
+  
+    resultContainer.innerText = 'Your age is ' + age;
+  }
+  
